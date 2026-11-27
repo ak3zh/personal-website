@@ -1,0 +1,28 @@
+# Server rules for the free host (Apache). Each block is skipped if the module is not available.
+
+# 1. The site's own trilingual error page for unknown addresses.
+ErrorDocument 404 /404.html
+
+# 2. Always HTTPS (rule recommended by InfinityFree; the extra conditions prevent redirect loops behind a proxy).
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP:CF-Visitor} !{"scheme":"https"}
+  RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# 3. Security headers. The CSP repeats the meta tag in the pages and adds what a meta tag cannot: frame-ancestors (no embedding in other sites).
+<IfModule mod_headers.c>
+  Header always set Content-Security-Policy "default-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; object-src 'none'"
+  Header always set X-Frame-Options "DENY"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+</IfModule>
+
+# 4. Correct text encoding for every page, script and style sheet.
+AddDefaultCharset UTF-8
+<IfModule mod_mime.c>
+  AddCharset UTF-8 .html .css .js .svg
+</IfModule>
