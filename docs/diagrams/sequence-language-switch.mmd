@@ -1,0 +1,20 @@
+sequenceDiagram
+  actor V as Visitor
+  participant B as Browser
+  participant A as app.js
+  participant D as translations.js (window.I18N)
+  participant S as localStorage
+  V->>B: open projects.html?lang=kk
+  B->>A: DOMContentLoaded
+  A->>A: detectLang(): URL param, then storage, then browser language, then en
+  A->>D: t(lang, key) for each [data-i18n]
+  D-->>A: text (falls back to en if key missing)
+  A->>B: textContent, html lang, title, meta description, aria-pressed
+  A->>S: safeSet("lang") inside try/catch
+  A->>B: replaceState(?lang=kk), internal links get ?lang=kk
+  V->>B: click RU button
+  B->>A: click handler
+  A->>D: t("ru", key)
+  A->>B: update page without reload
+  V->>B: click link "Contact"
+  B->>B: load contact.html?lang=ru (language kept)

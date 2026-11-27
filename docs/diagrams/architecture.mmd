@@ -1,0 +1,15 @@
+flowchart LR
+  subgraph Dev["Development (assistant + student)"]
+    SRC["Git repository<br/>site/, tests/, docs/"]
+    GEN["build.js<br/>generates HTML"]
+    TST["Playwright tests"]
+  end
+  subgraph Host["InfinityFree free hosting"]
+    HT["htdocs/<br/>static files"]
+  end
+  U["Visitor's browser<br/>HTTPS"]
+  SRC --> GEN --> SRC
+  SRC --> TST
+  SRC -- "File Manager or FTP upload (manual)" --> HT
+  HT -- "HTTPS, *.freedev.app" --> U
+  TST -. "BASE=https://... after deploy" .-> HT

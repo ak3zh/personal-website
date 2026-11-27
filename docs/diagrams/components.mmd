@@ -1,0 +1,55 @@
+classDiagram
+  class Page_HTML {
+    +data-page
+    +data-i18n keys
+    +data-internal links
+    semantic landmarks
+  }
+  class translations_js {
+    +I18N.en
+    +I18N.ru
+    +I18N.kk
+    79 keys per language
+  }
+  class app_js {
+    +detectLang()
+    +t(lang, key)
+    +applyLang(lang)
+    +applyTheme(theme)
+    +syncThemeButton()
+    +movePill(link)
+    +initSpotlight()
+    +initPageTransitions()
+    -safeGet(key)
+    -safeSet(key, value)
+  }
+  class style_css {
+    colour tokens
+    light and dark themes
+    responsive layout
+    reduced-motion rule
+  }
+  class early_js {
+    +applies saved theme before paint
+    +marks page pending
+  }
+  class htaccess {
+    404 page, HTTPS redirect
+    security headers, UTF-8
+  }
+  class build_js {
+    generates 5 pages and 404.html, .htaccess
+    writes favicon.svg
+  }
+  class run_tests_js {
+    25 automated checks
+    Playwright, Chromium
+  }
+  build_js ..> Page_HTML : generates
+  Page_HTML --> translations_js : loads
+  Page_HTML --> app_js : loads
+  Page_HTML --> early_js : loads first
+  build_js ..> htaccess : writes
+  Page_HTML --> style_css : links
+  app_js --> translations_js : reads
+  run_tests_js ..> Page_HTML : checks

@@ -1,0 +1,34 @@
+<!doctype html><meta charset="utf-8"><style>
+body{font:14px Arial;margin:20px;background:#fff;color:#222}
+.row{display:flex;gap:40px;align-items:flex-start}
+h2{font-size:16px;margin:0 0 8px}
+.frame{border:2px solid #222;background:#fff;padding:10px;box-sizing:border-box}
+.d{width:620px}.m{width:240px}
+.box{border:1.5px solid #555;padding:6px;margin:6px 0;text-align:center;background:#f4f4f4}
+.nav{display:flex;gap:6px;flex-wrap:wrap}.nav .box{flex:1;margin:2px 0;font-size:12px}
+.lg{display:flex;gap:4px}.lg .box{width:34px;font-size:11px}
+.hdr{display:flex;justify-content:space-between;align-items:center;gap:6px}
+.big{height:34px;font-size:20px;font-weight:bold;background:#eaeaea}
+.dark{background:#bbb;text-align:left}
+.cols{display:flex;gap:8px}.cols .box{flex:1}
+small{color:#666}
+.d .nav{flex-wrap:nowrap}.d .nav .box{font-size:11px;padding:4px 2px}.d .lg .box{width:26px;font-size:10px;padding:4px 2px}
+.m .lg .box{width:22px;font-size:10px;padding:4px 1px}.m .hdr > .box:first-child{font-size:12px;padding:4px}
+</style>
+<div class="row">
+<div><h2>Desktop: Home (index.html)</h2><div class="frame d">
+<div class="hdr"><div class="box">Name (text)</div><div class="nav" style="flex:3"><div class="box">Home</div><div class="box">Education</div><div class="box">Projects</div><div class="box">Interests</div><div class="box">Contact</div></div><div class="lg"><div class="box">KK</div><div class="box">RU</div><div class="box">EN</div><div class="box">◐</div></div></div><small>one row, thin line under the current menu item, no logo</small>
+<div class="box big">H1: Hi, I am Akezhan Bekov</div><div class="box">Lead paragraph + studies paragraph</div>
+<div class="cols"><div class="box">Button: See my projects</div><div class="box">Button: Education</div></div>
+<div class="box dark">Dark panel:<br>University / High school / GitHub link</div><div class="box">Footer: © 2026 Akezhan Bekov</div></div></div>
+<div><h2>Desktop: inner page with card grid (about.html)</h2><div class="frame d">
+<div class="box">Header (same as Home)</div><div class="box big">H1: Education</div><div class="cols"><div class="box" style="flex:2">University card (wide)</div><div class="box">School card</div></div><div class="box">H2 Subjects</div><div class="cols"><div class="box">Subject 1</div><div class="box">Subject 2</div><div class="box">Subject 3</div></div><div class="cols"><div class="box">Subject 4</div><div class="box">Subject 5</div></div><div class="box">Footer: name | major</div></div></div>
+</div>
+<br><div class="row">
+<div><h2>Mobile 375 px: Home</h2><div class="frame m">
+<div class="hdr"><div class="box">Name</div><div class="lg"><div class="box">KK</div><div class="box">RU</div><div class="box">EN</div><div class="box">◐</div></div></div>
+<div class="nav" style="flex-wrap:nowrap;overflow:hidden"><div class="box">Home</div><div class="box">Education</div><div class="box">Projects</div><div class="box">Interes…</div></div><small>menu: one row, scrolls sideways</small>
+<div class="box big" style="height:60px">H1 (wraps)</div><div class="box">Lead text</div><div class="box">Button: Projects</div><div class="box">Button: Education</div><div class="box dark">Dark panel</div><div class="box">Footer</div></div></div>
+<div><h2>Mobile 375 px: Projects</h2><div class="frame m">
+<div class="box">Header + language + nav</div><div class="box big" style="height:40px">H1: Projects</div><div class="box">Card: Connecta CRM<br><small>no public link</small></div><div class="box">Card: Smart Campus<br><small>tech list, demo + code links</small></div><div class="box">Card: Warehouse Inventory Tracker<br><small>no public link</small></div><div class="box">Footer</div></div></div>
+</div>

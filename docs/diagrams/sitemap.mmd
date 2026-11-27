@@ -1,0 +1,17 @@
+flowchart TD
+  H["index.html<br/>Home: intro, key facts, language selector"]
+  A["about.html<br/>Education and completed subjects"]
+  P["projects.html<br/>Projects (3)"]
+  I["interests.html<br/>Interests and plans"]
+  C["contact.html<br/>GitHub link, privacy, credits"]
+  GH(["github.com/ak3zh<br/>external"])
+  SC(["Smart Campus demo (Bolt) and repo<br/>external"])
+  H --- A
+  H --- P
+  H --- I
+  H --- C
+  P -. links .-> SC
+  C -. link .-> GH
+  H -. link .-> GH
+  classDef ext fill:#eef2ff,stroke:#4f46e5;
+  class GH,SC ext;
